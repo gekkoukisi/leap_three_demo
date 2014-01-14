@@ -1,14 +1,8 @@
 
 var fingers = new Array;
 
-var log1 = function(str){
-	$("#log1")[0].value = str;
-}
-var log2 = function(str){
-	$("#log2")[0].value = str;
-}
-var log3 = function(str){
-	$("#log3")[0].value = str;
+var log = function(str){
+	$("#log")[0].value = str;
 }
 Leap.loop({enableGestures: true}, function(frame){
 	fingers = t_getFingers(frame);
@@ -27,11 +21,8 @@ var scene = new THREE.Scene();
 			renderer.setSize(window.innerWidth, window.innerHeight);
 			$("#screen")[0].appendChild(renderer.domElement);
 
-			//var geometry = new THREE.CubeGeometry(0.1,0.1,0.1);
 			var geometry = new THREE.CircleGeometry(0.1);
 			var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-			//var cube = new THREE.Mesh(geometry, material);
-			//scene.add(cube);
 
 			camera.position.z = 10;
 			var cubes = new Array;
@@ -54,26 +45,4 @@ var scene = new THREE.Scene();
 			};
 
 			render(); 
-function Queue() {
-	this.val = new Array();
-}
-
-Queue.prototype.enqueue = function(o) {
-	this.val.push(o);
-}
-
-Queue.prototype.dequeue = function() {
-	if( this.val.length > 0 ) {
-		return this.val.shift();
-	}
-	return null;
-}
-
-Queue.prototype.size = function() {
-	return this.val.length;
-} 
-
-Queue.prototype.toString = function() {
-	return '[' + this.val.join(',') + ']';
-}
 
